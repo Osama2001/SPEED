@@ -73,7 +73,17 @@ msg.delete();
 });   
 
 
-
+client.on('message',function(message) {
+    let messageArray = message.content.split(" ");
+    let args = messageArray[1];
+   if(message.content.startsWith(prefix + "counting")) {
+	       if (!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send(`:false: **| ${message.author.username} you need \`ADMINISTRATOR\` Permission to use this Command !**`)
+       if(!args) return message.reply('ℹ ``اختر رقم``');
+       let i;
+       for (i = 0; i < `${parseInt(args) + 1}`; ++i)
+       message.channel.send(i)
+   }
+});
 
 
 
