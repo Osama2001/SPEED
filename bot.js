@@ -16,8 +16,29 @@ client.on('ready', () => {
     console.log('----------------');
 });
 
-client.on('ready', () => {
-    client.user.setGame(`SPEEDXCRAFT`, "http://twitch.tv/Streammingg")	
+client.on("ready", () => {
+console.log('_____');
+console.log('ready');
+client.user.setPresence({
+  status: 'dnd',
+ game: { 
+    type: 2,
+    name: '-----------------------------------',
+     details: `with your mom`,
+     url: 'https://www.twitch.tv/skwadraa',
+     state: `__________________________________`,
+    application_id: '439427922583879690',
+     assets: {
+         
+         large_image: `457571196662317057`,
+         large_text: `deadpool` ,//يلي بيظهر فصوره الكبيره
+        small_image: `457571631804710928`,
+        small_text: '2'//يلي بيظهر فصورة صغيره
+       
+    }
+
+  }
+    });
 });
 
 
