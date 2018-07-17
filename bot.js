@@ -7,7 +7,7 @@ const cooldown = new Set();
 var moment = require('moment')
 var Canvas = require('canvas');
 var jimp = require('jimp');
-const prefix = "+";
+const prefix = "-";
 const embed = new Discord.RichEmbed()
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -31,12 +31,14 @@ if(!message.channel.guild) return message.channel.send('**هذا الأمر فق
    var m8tr7 = message.author.id
 if(!message.guild.channels.find("name","suggestions")) return message.channel.send('انشء روم باسم   \`suggestions \`')
    var ThxForSug = new Discord.RichEmbed()
+      .setColor('WHITE')
    .setTitle(`:white_check_mark: Success!`)
    .setTimestamp()
    .setDescription(`شكراً على اقتراحك !`)
 .setDescription(`**Your Suggestion** : ${a8tra7}`)
    var Sure = new Discord.RichEmbed()
    .setTimestamp()
+      .setColor('WHITE')
    .setTitle(`هل انت متأكد من ارسال الاقتراح؟ معك دقيقه قبل الالغاء`)
 .setDescription(`Suggestion : **${a8tra7}**`)
 		 .setFooter('SPEEDXCRAFT' , client.user.avatarURL)
@@ -53,7 +55,7 @@ let No = msg.createReactionCollector(NoFilter, { time: 60000 });
 Yes.on("collect", r => {
    var ala8tra7 = new Discord.RichEmbed()
    .setTimestamp()
-   .setColor('RANDOM')
+   .setColor('GOLD')
    .setThumbnail(message.author.avatarURL)
    .setTitle(`New Suggestion :bell:`)
    .setDescription(`From : __<@${m8tr7}>__\n\nSuggestion: **${a8tra7}**`)
