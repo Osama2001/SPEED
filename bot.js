@@ -39,7 +39,7 @@ if(!message.guild.channels.find("name","suggestions")) return message.channel.se
    .setTimestamp()
    .setTitle(`هل انت متأكد من ارسال الاقتراح؟ معك دقيقه قبل الالغاء`)
 .setDescription(`Suggestion : **${a8tra7}**`)
-		 .setFooter('DK SUPPORT' , client.user.avatarURL)
+		 .setFooter('SPEEDXCRAFT' , client.user.avatarURL)
 message.channel.sendEmbed(Sure).then(msg => {
     msg.react('❎')
 .then(() => msg.react('✅'))
