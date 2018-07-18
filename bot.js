@@ -16,29 +16,8 @@ client.on('ready', () => {
     console.log('----------------');
 });
 
-client.on("ready", () => {
-console.log('_____');
-console.log('ready');
-client.user.setPresence({
-  status: 'dnd',
- game: { 
-    type: 2,
-    name: '-----------------------------------',
-     details: `with your mom`,
-     url: 'https://www.twitch.tv/skwadraa',
-     state: `__________________________________`,
-    application_id: '439427922583879690',
-     assets: {
-         
-         large_image: `457571196662317057`,
-         large_text: `deadpool` ,//يلي بيظهر فصوره الكبيره
-        small_image: `457571631804710928`,
-        small_text: '2'//يلي بيظهر فصورة صغيره
-       
-    }
-
-  }
-    });
+client.on('ready', () => {
+    client.user.setGame(`SPEEDXCRAFT`, "http://twitch.tv/Streammingg")	
 });
 
 
@@ -104,6 +83,57 @@ client.on('message',function(message) {
        for (i = 0; i < `${parseInt(args) + 1}`; ++i)
        message.channel.send(i)
    }
+});
+
+
+client.on('message', function(message) {
+    
+    if(message.content.startsWith(prefix + "report")) {
+        if(!message.channel.guild) return message.reply("This Command For Servers Only")
+        let staff = message.guild.member(message.author).roles.find('name', 'STAFF');
+       
+        if(!staff) return message.reply('You Must Have @STAFF Role To Report Members')
+        if (message.author.bot) return;
+        let messageArgs = message.content.split(" ").slice(1).join(" ");
+        let messageReason = message.content.split(" ").slice(2).join(" ");
+        var reporter = message.author.id
+        const report = message.guild.channels.find("name", "reports")
+        if(!message.guild.channels.find("name","reports")) return message.channel.send('انشء روم باسم   \`reports\`')
+        if(!messageReason) return message.reply("**# Specify a reason!**");
+    let mUser = message.mentions.users.first();
+    if(!mUser) return message.channel.send("Couldn't find user.");
+    let Rembed = new Discord.RichEmbed()
+    .setTitle("`New Report 📃`")
+    .setThumbnail(message.author.avatarURL)
+    .setColor('GOLD')
+    .addField("**- Reported User:**",mUser,true)
+    .addField("**- Reported User ID:**",mUser.id,true)
+    .addField("**- Reason:**",messageReason,true)
+    .addField("**- Channel:**",message.channel,true)
+   .setDescription(`**From** : <@${reporter}>`)
+		 .setFooter('SPEEDXCRAFT SUPPORT' , client.user.avatarURL)
+    
+message.channel.send(Rembed)
+message.channel.send("``Are you sure you want to send this report???``").then(msg => {
+    msg.react("✅")
+    msg.react("❌")
+.then(() => msg.react('❌'))
+.then(() =>msg.react('✅'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '❌' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 60000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 60000 });
+reaction1.on("collect", r => {
+    report.send(Rembed)
+    message.reply("** Done! 🎇**");
+})
+reaction2.on("collect", r => {
+    message.reply("** Canceled**").then(message => {message.delete(4000)})
+msg.delete();
+})
+})
+}
 });
 
 
