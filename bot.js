@@ -92,7 +92,7 @@ client.on('message', function(message) {
         if(!message.channel.guild) return message.reply("This Command For Servers Only")
         let staff = message.guild.member(message.author).roles.find('name', 'STAFF');
        
-        if(!staff) return message.reply('You Must Have @STAFF Role To Report Members')
+        if(!staff) return message.reply('You Must Have <@469059909569347585> Role To Report Members')
         if (message.author.bot) return;
         let messageArgs = message.content.split(" ").slice(1).join(" ");
         let messageReason = message.content.split(" ").slice(2).join(" ");
