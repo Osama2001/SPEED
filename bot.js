@@ -89,11 +89,7 @@ client.on('message',function(message) {
 client.on('message', function(message) {
     
     if(message.content.startsWith(prefix + "report")) {
-        if(!message.channel.guild) return message.reply("This Command For Servers Only")
-        let staff = message.guild.member(message.author).roles.find('name', 'STAFF');
-       
-        if(!staff) return message.reply('You Must Have @STAFF Role To Report Members')
-        if (message.author.bot) return;
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **You Not Have Permission To Use This Command**');
         let messageArgs = message.content.split(" ").slice(1).join(" ");
         let messageReason = message.content.split(" ").slice(2).join(" ");
         var reporter = message.author.id
