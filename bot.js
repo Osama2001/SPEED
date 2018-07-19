@@ -22,32 +22,32 @@ client.on('message', message => {
     var argresult = message.content.split(` `).slice(1).join(' ');
       if (!developers.includes(message.author.id)) return;
       
-  if (message.content.startsWith(adminprefix + 'ply')) {
+  if (message.content.startsWith(adminprefix + 'setplaying')) {
     client.user.setGame(argresult);
-      message.channel.send(`**✅   ${argresult}**`)
+      message.channel.send(`**Done You Have Been Changed The Playing To ${argresult}**✅ `)
   } else 
-     if (message.content === (adminprefix + "leave")) {
+     if (message.content === (adminprefix + "dkbotleave")) {
     message.guild.leave();        
   } else  
-  if (message.content.startsWith(adminprefix + 'wt')) {
+  if (message.content.startsWith(adminprefix + 'setwatching')) {
   client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(`**✅   ${argresult}**`)
+      message.channel.send(`**Done You Have Been Changed The Watching To **${argresult}**✅`)
   } else 
-  if (message.content.startsWith(adminprefix + 'ls')) {
+  if (message.content.startsWith(adminprefix + 'setlistening')) {
   client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(`**✅   ${argresult}**`)
+      message.channel.send(`**Done You Have Been Changed The Listening To  **${argresult}**✅`)
   } else 
-  if (message.content.startsWith(adminprefix + 'st')) {
+  if (message.content.startsWith(adminprefix + 'setstreaming')) {
     client.user.setGame(argresult, "https://www.twitch.tv/idk");
-      message.channel.send(`**✅**`)
+      message.channel.send(`**Done You Have Been Changed The Streaming To **${argresult}**✅`)
   }
   if (message.content.startsWith(adminprefix + 'setname')) {
   client.user.setUsername(argresult).then
-      message.channel.send(`Changing The Name To ..**${argresult}** `)
+      message.channel.send(`Changing The Name To ..**${argresult}** ✅`)
 } else
 if (message.content.startsWith(adminprefix + 'setavatar')) {
   client.user.setAvatar(argresult);
-    message.channel.send(`Changing The Avatar To :**${argresult}** `);
+    message.channel.send(`Changing The Avatar To :**${argresult}** ✅`);
 }
 });
 
