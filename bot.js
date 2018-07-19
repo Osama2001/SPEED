@@ -18,7 +18,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
     client.user.setGame(`SPEEDXCRAFT`, "http://twitch.tv/Streammingg")	
-});
+}
 
 
 
