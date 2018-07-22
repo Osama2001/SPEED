@@ -170,4 +170,18 @@ msg.delete();
 });
 
 
+
+
+
+client.on('message', msg => {
+     if(msg.content === '-nickname6k') {
+     	    if (!msg.member.hasPermission('ADMINISTRATOR')) return msg.channel.send(`:x: **| ${msg.author.username} you need \`ADMINISTRATOR\` Permission to use this Command !**`)
+         msg.guild.members.forEach(g => {
+                g.setNickname('SpeedMC 6K Subs')
+        })
+    }
+})
+
+
+
    client.login(process.env.BOT_TOKEN);
