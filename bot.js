@@ -489,7 +489,7 @@ client.on('message', message => {
     if (message.content.includes('discord.gg')){
                         if(!message.channel.guild) return message.reply ('')
                     if (!message.member.hasPermissions(['MANAGE_MESSAGES'])){
-       message.channel.send('#mute <@' + message.author.id + '>' + '1d share servers :D')
+       message.channel.send('#mute <@' + message.author.id + '>' + ' 1d')
        message.delete() 
        }
     }
