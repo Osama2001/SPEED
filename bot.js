@@ -22,8 +22,7 @@ client.on('ready', () => {
 
 
 client.on("message", (message) => {
-    
-    if (isCommand(message, "new")) {
+if(message.content.startsWith(prefix +'new')) {
         const reason = message.content.split(" ").slice(1).join(" ");
         if (!message.guild.roles.exists("name", "SUPPORT-TEAM")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
         if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
@@ -54,7 +53,7 @@ client.on("message", (message) => {
     }
 
 
-    if (isCommand(message, "close")) {
+if(message.content.startsWith(prefix +'close')) {
         if (!message.channel.name.startsWith(`ticket-`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
 
         message.channel.send(`Are you sure? Once confirmed, you cannot reverse this action!\nTo confirm, type \`/confirm\`. This will time out in 10 seconds and be cancelled.`)
